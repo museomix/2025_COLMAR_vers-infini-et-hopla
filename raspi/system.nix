@@ -59,7 +59,7 @@
     ];
     script = ''
       ${pkgs.alsa-utils}/bin/amixer set PCM 100%
-      ${pkgs.ffmpeg.bin}/bin/ffmpeg -re -stream_loop -1 -i ${../sounds/voices.flac} -f alsa hw:0,0
+      ${pkgs.ffmpeg.bin}/bin/ffmpeg -re -stream_loop -1 -i ${../sounds/voices.flac} -filter:a "volume=1.25" -f alsa hw:0,0
     '';
     serviceConfig = {
       Restart = "always";
